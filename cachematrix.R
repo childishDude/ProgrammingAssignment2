@@ -2,7 +2,8 @@
 ## solving the matrix. The first function takes an input matrix and stores this 
 ## value and creates a solution variable 'm' which stores cached solutions. The 
 ## second fuction accesses these values, to check if the cache is empty, and if so 
-## solves using the input variable, otherwise returns and stores the cached value.
+## solves using the input variable and stores the new solution in the cache, 
+## otherwise returns the cached value.
 
  
  # The following function takes an input matrix as its only argument. The function
@@ -16,8 +17,8 @@ makeCacheMatrix <- function(x = matrix()) {
   # there is no inverse matrix calculated yet. It serves as the cached solution.
   m<-NULL
   
-  # The Set matrix function resets the input matrix variable 'x'. It also sets 
-  # 'm' to null, ensuring that once a new input is set, the solution variable 
+  # The Set matrix function resets the input matrix variable 'x' to 'y'. It also 
+  # sets 'm' to null, ensuring that once a new input is set, the solution variable 
   # is also reset. Both 'x' and 'm' are reset for the entire main parent 
   # function environment as '<<-' is used to set, so other functions may access
   # the new values
@@ -26,12 +27,12 @@ makeCacheMatrix <- function(x = matrix()) {
     m <<- NULL
   }
   
-  # the Get matrix function returns the value of the input matrix variable 'x'.
+  # the Get matrix function returns the value of the curret input matrix variable 'x'.
   getMatrix <- function(){
     x
   }
   
-  # This function takes the solution as an input. This solution is set for the 
+  # This function takes the solution as an argument. This solution is set for the 
   # entire parent function envrionment in 'm', the solution matrix variable. This
   # is the cached solution and is only reset when the input is reset, through the 
   # setMatrix function, or through the main parent function, makeCacheMatrix.
