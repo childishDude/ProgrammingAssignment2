@@ -1,14 +1,14 @@
 ## The following functions split their roles, between storing matrix values and
 ## solving the matrix. The first function takes an input matrix and stores this 
 ## value and creates a solution variable 'm' which stores cached solutions. The 
-## second fuction acesses these values, to check if the cache is empty, and if so 
-## solves using the input variable, otherwise returns the cached value.
+## second fuction accesses these values, to check if the cache is empty, and if so 
+## solves using the input variable, otherwise returns and stores the cached value.
 
  
  # The following function takes an input matrix as its only argument. The function
- # body contains the input matrix variable (unsolved) and a solution matrix
- # variable (solved), which serves as the cache for the solution along with four
- # functions
+ # body stores the input matrix variable and a solution matrix variable, which 
+ # serves as a cache to store solution values. It also creates and returns a list 
+ # of four functions, which can access and change these variables.
 makeCacheMatrix <- function(x = matrix()) {
   
   # m is the solution matrix variable. It is set to NULL in the beginning, as 
