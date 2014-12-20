@@ -8,7 +8,8 @@
  # The following function takes an input matrix as its only argument. The function
  # body stores the input matrix variable and a solution matrix variable, which 
  # serves as a cache to store solution values. It also creates and returns a list 
- # of four functions, which can access and change these variables.
+ # of four child functions, which can access (get) and change these variables (set)
+ # for the main parent function through the assignment operator '<<-'.
 makeCacheMatrix <- function(x = matrix()) {
   
   # m is the solution matrix variable. It is set to NULL in the beginning, as 
@@ -17,8 +18,8 @@ makeCacheMatrix <- function(x = matrix()) {
   
   # the Set matrix function resets the input matrix variable 'x'. It also sets 
   # 'm' to null, ensuring that once a new input is set, the solution variable 
-  # is also reset. Both 'x' and 'm' are reset across the entire main parent 
-  # function environment as '<<' is used to set, so other functions may access
+  # is also reset. Both 'x' and 'm' are reset for the entire main parent 
+  # function environment as '<<-' is used to set, so other functions may access
   # the new values
   setMatrix <- function(y){
     x <<- y
@@ -30,8 +31,10 @@ makeCacheMatrix <- function(x = matrix()) {
     x
   }
   
-  # This function takes the solution as an input. This solution is set across the 
-  # entire parent function envrionment as 'm', the solution matrix variable.
+  # This function takes the solution as an input. This solution is for the 
+  # entire parent function envrionment as 'm', the solution matrix variable. This
+  # is the cached solution and is only reset when the input is reset, through the 
+  # setMatrix function, or through the main parent function, makeCacheMatrix.
   setCacheMatrix <- function(matrix){
     m <<- matrix
   }
